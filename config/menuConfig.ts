@@ -7,6 +7,7 @@ import {
   MonitorCheckIcon,
   BoxIcon,
   CircleDollarSignIcon,
+  NetworkIcon,
 } from "lucide-react";
 
 const TOP_NAV_ITEM = [
@@ -25,9 +26,9 @@ const MID_NAV_ITEM = [
   { title: "Create", path: "/create", icon: PlusSquare, disabled: false },
   {
     title: "Your Content",
-    path: "/content",
+    path: "/your-content",
     icon: MonitorCheckIcon,
-    disabled: true,
+    disabled: false,
   },
   {
     title: "Membership",
@@ -38,6 +39,12 @@ const MID_NAV_ITEM = [
 ];
 
 const BOTTOM_NAV_ITEM = [
+  {
+    title: "DAO",
+    path: "/dao",
+    icon: NetworkIcon,
+    disabled: true,
+  },
   {
     title: "Revenue",
     path: "/revenue",
