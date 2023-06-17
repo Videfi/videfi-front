@@ -33,7 +33,7 @@ const MID_NAV_ITEM = [
     title: "Membership",
     path: "/membership",
     icon: BoxIcon,
-    disabled: true,
+    disabled: false,
   },
 ];
 
