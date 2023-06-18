@@ -2,9 +2,23 @@ import MainLayout from "@/components/MainLayout";
 import HomeFeed from "@/components/home/HomeFeed";
 import TagSelector from "@/components/home/TagSelector";
 import { Inter } from "next/font/google";
+import { ContentQueryDocument, ContentQueryQuery, execute } from '../.graphclient'
+import { useEffect, useState } from "react";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+
+  const [data, setData] = useState<ContentQueryQuery>()
+
+  useEffect(() => {
+    execute(ContentQueryDocument, {}).then((result) => {
+      setData(result?.data)
+    })
+  }, [setData]);
+
+  console.log(data);
+
   return (
     <MainLayout>
       <div className={`${inter.className} w-full h-full`}>
