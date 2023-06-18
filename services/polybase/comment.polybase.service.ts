@@ -1,11 +1,13 @@
 import { updateRecord } from "@/lib/polybase/update.polybase";
 import { writeRecord } from "@/lib/polybase/write.polybase";
+import { dateToTimestamp } from "@/utils/date.util";
 import { formatDataFetch } from "@/utils/polybase.util";
 import { CollectionRecord } from "@polybase/client";
 
-export const createComment = async ({ comment, video, createdAt, owner }: { comment: string, video: CollectionRecord<any>, owner:  CollectionRecord<any>, createdAt: string}) => {
+export const createComment = async ({ comment, video, owner }: { comment: string, video: CollectionRecord<any>, owner:  CollectionRecord<any>}) => {
   // createdAt => timestamp 
   try {
+    const createdAt = dateToTimestamp(new Date());
     const res = await writeRecord({ collection: "Comment", data: [video, comment, owner, createdAt] });
     return formatDataFetch(res);
   } catch (err) {

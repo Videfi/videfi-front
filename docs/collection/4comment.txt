@@ -9,7 +9,7 @@ collection Comment {
   like: number;
   createdAt: string;
 
-  constructor(id: string, video: Video, comment: string, owner: User, createdAt) {
+  constructor(id: string, video: Video, comment: string, owner: User, createdAt: string) {
     this.id = id;
     this.video = video;
     this.comment = comment;
