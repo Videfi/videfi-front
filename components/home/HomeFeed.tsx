@@ -11,6 +11,7 @@ export default function HomeFeed() {
         feedData.contentNFTs.map((nft, index) => (
           <IPFSVideoCard
             key={index}
+            id={nft.id}
             ipfsHash={nft.content.tokenURI}
             views={0}
             owner={nft.owner.id}
