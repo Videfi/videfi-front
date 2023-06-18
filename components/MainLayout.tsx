@@ -8,13 +8,12 @@ type Props = {
 
 export default function MainLayout({ children }: Props) {
   return (
-    <div className="flex items-center flex-col h-screen w-full bg-vdf-black">
+    <div className="h-screen w-full bg-vdf-black">
       <Navbar />
-      <div className="flex w-full h-full">
+      <div className="flex w-full h-full overflow-hidden">
         <Sidebar />
-        <div className="flex-1 h-full bg-vdf-black"></div>
+        <div className="flex-1 h-full bg-vdf-sec-black">{children}</div>
       </div>
-      {children}
     </div>
   );
 }
