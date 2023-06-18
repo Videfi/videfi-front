@@ -3,8 +3,14 @@
 collection Tag {
   id: string;
   name: string;
+  video?: Video[];
+
   constructor(id: string, name: string) {
     this.id = id;
     this.name = name;
+  }
+
+  addVideo(video: Video) {
+    this.video.push(video);
   }
 }
