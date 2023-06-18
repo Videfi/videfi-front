@@ -18,7 +18,7 @@ const TOP_NAV_ITEM = [
     disabled: true,
   },
   { title: "Live", path: "/live", icon: RadioIcon, disabled: true },
-  { title: "Meet", path: "/meet", icon: MessagesSquare, disabled: true },
+  { title: "Meet", path: "/meet", icon: MessagesSquare, disabled: false },
 ];
 
 const MID_NAV_ITEM = [
