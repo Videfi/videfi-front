@@ -31,7 +31,7 @@ export default function ViewVideo({ id }: { id: string }) {
               <p className="text-gray-300">{owner}</p>
               <p className="text-gray-400 text-sm">8 minutes ago</p>
             </div>
-            <VideoActionBar />
+            <VideoActionBar id={id} like={123} />
           </div>
         </div>
         <Separator className="mt-3 bg-vdf-gray" />
