@@ -31,7 +31,9 @@ export default function CreateVideo() {
   const [description, setDescription] = useState("");
   const [limit, setLimit] = useState("1");
   const [price, setPrice] = useState("0");
-  const [paymentToken, setPaymentToken] = useState("0x2d2da8809eC403136c851d402FB94255326c28F3");
+  const [paymentToken, setPaymentToken] = useState(
+    "0x2d2da8809eC403136c851d402FB94255326c28F3"
+  );
   const [duration, setDuration] = useState(0); // seconds
 
   const [uploading, setUploading] = useState(false);
@@ -220,11 +222,7 @@ export default function CreateVideo() {
 
           {imagePreviewUrl && (
             <div>
-              <img
-                src={imagePreviewUrl}
-                alt="Image preview"
-                width="200"
-              />
+              <img src={imagePreviewUrl} alt="Image preview" width="200" />
             </div>
           )}
 

@@ -18,9 +18,13 @@ const nextConfig = {
         hostname: "i.ytimg.com",
       },
       {
-        protocol: 'https',
-        hostname: 'ipfs.io'
-      }
+        protocol: "https",
+        hostname: "ipfs.io",
+      },
+      {
+        protocol: "https",
+        hostname: "zipmex.com",
+      },
     ],
   },
 };
