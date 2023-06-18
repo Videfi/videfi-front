@@ -5,7 +5,7 @@ import { mint } from "@/services/contracts/videfiContent";
 import { getPublicClient } from "@/lib/viem";
 import { useAllowance } from "@/hooks/useAllowance";
 import { useAccount } from "wagmi";
-import { uselimitAmount } from "@/hooks/useLimitAmount";
+import { useLimitAmount } from "@/hooks/useLimitAmount";
 import { useTotalSupply } from "@/hooks/useTotalSupply";
 import { approve } from "@/services/contracts/erc20";
 import { ADDRESSES } from "@/constants/addresses";
@@ -28,7 +28,7 @@ export default function VideoActionBar({ id, like }: PropsType) {
     account?.address as string,
     nftAddress
   );
-  const limitAmount = uselimitAmount(nftAddress);
+  const limitAmount = useLimitAmount(nftAddress);
   const totalSupply = useTotalSupply(nftAddress);
 
   console.log({ allowance })
