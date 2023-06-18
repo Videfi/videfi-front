@@ -43,6 +43,7 @@
     "wagmi": "^1.0.9"
   },
   "devDependencies": {
-    "@graphprotocol/client-cli": "^3.0.0"
+    "@graphprotocol/client-cli": "^3.0.0",
+    "zustand": "^4.3.8"
   }
 }
