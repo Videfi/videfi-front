@@ -21,3 +21,7 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+### Related repositories
+1. Videfi Contract - [https://github.com/Videfi/videfi-contract](https://github.com/Videfi/videfi-contract)
+2. Videfi Subgraph - [https://github.com/Videfi/videfi-subgraph](https://github.com/Videfi/videfi-subgraph)
