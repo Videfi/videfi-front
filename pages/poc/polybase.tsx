@@ -15,7 +15,7 @@ import { PublicKey } from "@polybase/client";
 import { useCollection, useDocument, usePolybase } from "@polybase/react";
 import { useState } from "react";
 
-export default function test() {
+export default function Test() {
   const polybase = usePolybase();
   const [id, setId] = useState("1");
   const [isLoading, setLoading] = useState(false);

@@ -1,0 +1,706 @@
+export const VidefiDAODeployer = {
+  abi: [
+    {
+      anonymous: false,
+      inputs: [
+        {
+          indexed: true,
+          internalType: "address",
+          name: "dao",
+          type: "address",
+        },
+      ],
+      name: "DAOCreated",
+      type: "event",
+    },
+    {
+      inputs: [
+        {
+          internalType: "string",
+          name: "_name",
+          type: "string",
+        },
+        {
+          internalType: "string",
+          name: "_image",
+          type: "string",
+        },
+        {
+          internalType: "address",
+          name: "_governanceToken",
+          type: "address",
+        },
+        {
+          internalType: "address",
+          name: "_rewardToken",
+          type: "address",
+        },
+      ],
+      name: "deploy",
+      outputs: [],
+      stateMutability: "nonpayable",
+      type: "function",
+    },
+  ],
+  bytecode: {
+    object:
+      "0x608060405234801561001057600080fd5b50610e3a806100206000396000f3fe608060405234801561001057600080fd5b506004361061002b5760003560e01c8063c6c7662314610030575b600080fd5b61004361003e36600461018b565b610045565b005b600084848484604051610057906100bf565b6100649493929190610256565b604051809103906000f080158015610080573d6000803e3d6000fd5b506040519091506001600160a01b038216907f9fcbb6a401790bae8845ece14b8ff9237eef958a6fbd81b5eb779be08de1cc3290600090a25050505050565b610b64806102a183390190565b634e487b7160e01b600052604160045260246000fd5b600082601f8301126100f357600080fd5b813567ffffffffffffffff8082111561010e5761010e6100cc565b604051601f8301601f19908116603f01168101908282118183101715610136576101366100cc565b8160405283815286602085880101111561014f57600080fd5b836020870160208301376000602085830101528094505050505092915050565b80356001600160a01b038116811461018657600080fd5b919050565b600080600080608085870312156101a157600080fd5b843567ffffffffffffffff808211156101b957600080fd5b6101c5888389016100e2565b955060208701359150808211156101db57600080fd5b506101e8878288016100e2565b9350506101f76040860161016f565b91506102056060860161016f565b905092959194509250565b6000815180845260005b818110156102365760208185018101518683018201520161021a565b506000602082860101526020601f19601f83011685010191505092915050565b6080815260006102696080830187610210565b828103602084015261027b8187610210565b6001600160a01b0395861660408501529390941660609092019190915250939250505056fe60c06040523480156200001157600080fd5b5060405162000b6438038062000b6483398101604081905262000034916200014f565b60006200004285826200026d565b5060016200005184826200026d565b506001600160a01b039182166080521660a05250620003399050565b634e487b7160e01b600052604160045260246000fd5b600082601f8301126200009557600080fd5b81516001600160401b0380821115620000b257620000b26200006d565b604051601f8301601f19908116603f01168101908282118183101715620000dd57620000dd6200006d565b81604052838152602092508683858801011115620000fa57600080fd5b600091505b838210156200011e5785820183015181830184015290820190620000ff565b600093810190920192909252949350505050565b80516001600160a01b03811681146200014a57600080fd5b919050565b600080600080608085870312156200016657600080fd5b84516001600160401b03808211156200017e57600080fd5b6200018c8883890162000083565b95506020870151915080821115620001a357600080fd5b50620001b28782880162000083565b935050620001c36040860162000132565b9150620001d36060860162000132565b905092959194509250565b600181811c90821680620001f357607f821691505b6020821081036200021457634e487b7160e01b600052602260045260246000fd5b50919050565b601f8211156200026857600081815260208120601f850160051c81016020861015620002435750805b601f850160051c820191505b8181101562000264578281556001016200024f565b5050505b505050565b81516001600160401b038111156200028957620002896200006d565b620002a1816200029a8454620001de565b846200021a565b602080601f831160018114620002d95760008415620002c05750858301515b600019600386901b1c1916600185901b17855562000264565b600085815260208120601f198616915b828110156200030a57888601518255948401946001909101908401620002e9565b5085821015620003295787850151600019600388901b60f8161c191681555b5050505050600190811b01905550565b60805160a0516107e96200037b6000396000818161016601528181610277015261045a0152600081816101a501528181610387015261056a01526107e96000f3fe608060405234801561001057600080fd5b50600436106100a95760003560e01c806370a082311161007157806370a08231146101135780638b08676414610133578063a694fc3a14610146578063f3ccaac014610159578063f7c618c114610161578063f96dae0a146101a057600080fd5b806306fdde03146100ae5780630dcc4b44146100cc57806318160ddd146100e15780632e17de78146100f85780634e71d92d1461010b575b600080fd5b6100b66101c7565b6040516100c39190610658565b60405180910390f35b6100df6100da3660046106a6565b610255565b005b6100ea60035481565b6040519081526020016100c3565b6100df6101063660046106a6565b610325565b6100ea610401565b6100ea6101213660046106bf565b60026020526000908152604090205481565b6100ea6101413660046106bf565b6104ce565b6100df6101543660046106a6565b610502565b6100b66105a1565b6101887f000000000000000000000000000000000000000000000000000000000000000081565b6040516001600160a01b0390911681526020016100c3565b6101887f000000000000000000000000000000000000000000000000000000000000000081565b600080546101d4906106e8565b80601f0160208091040260200160405190810160405280929190818152602001828054610200906106e8565b801561024d5780601f106102225761010080835404028352916020019161024d565b820191906000526020600020905b81548152906001019060200180831161023057829003601f168201915b505050505081565b6040516323b872dd60e01b8152336004820152306024820152604481018290527f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316906323b872dd906064016020604051808303816000875af11580156102c8573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906102ec919061071c565b50600354610302670de0b6b3a764000083610754565b61030c919061076b565b6004600082825461031d919061078d565b909155505050565b61032e336105ae565b336000908152600260205260408120805483929061034d9084906107a0565b92505081905550806003600082825461036691906107a0565b909155505060405163a9059cbb60e01b8152336004820152602481018290527f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03169063a9059cbb906044015b6020604051808303816000875af11580156103d9573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906103fd919061071c565b5050565b600061040c336105ae565b3360009081526006602052604090205480156104c95733600081815260066020526040808220919091555163a9059cbb60e01b81526004810191909152602481018290526001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000169063a9059cbb906044016020604051808303816000875af11580156104a3573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906104c7919061071c565b505b919050565b60006104d982610603565b6001600160a01b0383166000908152600660205260409020546104fc919061078d565b92915050565b61050b336105ae565b336000908152600260205260408120805483929061052a90849061078d565b925050819055508060036000828254610543919061078d565b90915550506040516323b872dd60e01b8152336004820152306024820152604481018290527f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316906323b872dd906064016103ba565b600180546101d4906106e8565b6105b781610603565b6001600160a01b038216600090815260066020526040812080549091906105df90849061078d565b90915550506004546001600160a01b03909116600090815260056020526040902055565b6001600160a01b0381166000908152600260209081526040808320546005909252822054600454670de0b6b3a76400009161063d916107a0565b6106479083610754565b610651919061076b565b9392505050565b600060208083528351808285015260005b8181101561068557858101830151858201604001528201610669565b506000604082860101526040601f19601f8301168501019250505092915050565b6000602082840312156106b857600080fd5b5035919050565b6000602082840312156106d157600080fd5b81356001600160a01b038116811461065157600080fd5b600181811c908216806106fc57607f821691505b6020821081036104c757634e487b7160e01b600052602260045260246000fd5b60006020828403121561072e57600080fd5b8151801515811461065157600080fd5b634e487b7160e01b600052601160045260246000fd5b80820281158282048414176104fc576104fc61073e565b60008261078857634e487b7160e01b600052601260045260246000fd5b500490565b808201808211156104fc576104fc61073e565b818103818111156104fc576104fc61073e56fea2646970667358221220d09ccc68c0f920daf3f0fc6585357437f3c06028a9f07e0b1da5902723bf61ed64736f6c63430008120033a2646970667358221220cf5f4fe81f1d6f87e22250e5922fb2ae57a95510a48ee82a193de9e76886669964736f6c63430008120033",
+    sourceMap: "158:423:46:-:0;;;;;;;;;;;;;;;;;;;",
+    linkReferences: {},
+  },
+  deployedBytecode: {
+    object:
+      "0x608060405234801561001057600080fd5b506004361061002b5760003560e01c8063c6c7662314610030575b600080fd5b61004361003e36600461018b565b610045565b005b600084848484604051610057906100bf565b6100649493929190610256565b604051809103906000f080158015610080573d6000803e3d6000fd5b506040519091506001600160a01b038216907f9fcbb6a401790bae8845ece14b8ff9237eef958a6fbd81b5eb779be08de1cc3290600090a25050505050565b610b64806102a183390190565b634e487b7160e01b600052604160045260246000fd5b600082601f8301126100f357600080fd5b813567ffffffffffffffff8082111561010e5761010e6100cc565b604051601f8301601f19908116603f01168101908282118183101715610136576101366100cc565b8160405283815286602085880101111561014f57600080fd5b836020870160208301376000602085830101528094505050505092915050565b80356001600160a01b038116811461018657600080fd5b919050565b600080600080608085870312156101a157600080fd5b843567ffffffffffffffff808211156101b957600080fd5b6101c5888389016100e2565b955060208701359150808211156101db57600080fd5b506101e8878288016100e2565b9350506101f76040860161016f565b91506102056060860161016f565b905092959194509250565b6000815180845260005b818110156102365760208185018101518683018201520161021a565b506000602082860101526020601f19601f83011685010191505092915050565b6080815260006102696080830187610210565b828103602084015261027b8187610210565b6001600160a01b0395861660408501529390941660609092019190915250939250505056fe60c06040523480156200001157600080fd5b5060405162000b6438038062000b6483398101604081905262000034916200014f565b60006200004285826200026d565b5060016200005184826200026d565b506001600160a01b039182166080521660a05250620003399050565b634e487b7160e01b600052604160045260246000fd5b600082601f8301126200009557600080fd5b81516001600160401b0380821115620000b257620000b26200006d565b604051601f8301601f19908116603f01168101908282118183101715620000dd57620000dd6200006d565b81604052838152602092508683858801011115620000fa57600080fd5b600091505b838210156200011e5785820183015181830184015290820190620000ff565b600093810190920192909252949350505050565b80516001600160a01b03811681146200014a57600080fd5b919050565b600080600080608085870312156200016657600080fd5b84516001600160401b03808211156200017e57600080fd5b6200018c8883890162000083565b95506020870151915080821115620001a357600080fd5b50620001b28782880162000083565b935050620001c36040860162000132565b9150620001d36060860162000132565b905092959194509250565b600181811c90821680620001f357607f821691505b6020821081036200021457634e487b7160e01b600052602260045260246000fd5b50919050565b601f8211156200026857600081815260208120601f850160051c81016020861015620002435750805b601f850160051c820191505b8181101562000264578281556001016200024f565b5050505b505050565b81516001600160401b038111156200028957620002896200006d565b620002a1816200029a8454620001de565b846200021a565b602080601f831160018114620002d95760008415620002c05750858301515b600019600386901b1c1916600185901b17855562000264565b600085815260208120601f198616915b828110156200030a57888601518255948401946001909101908401620002e9565b5085821015620003295787850151600019600388901b60f8161c191681555b5050505050600190811b01905550565b60805160a0516107e96200037b6000396000818161016601528181610277015261045a0152600081816101a501528181610387015261056a01526107e96000f3fe608060405234801561001057600080fd5b50600436106100a95760003560e01c806370a082311161007157806370a08231146101135780638b08676414610133578063a694fc3a14610146578063f3ccaac014610159578063f7c618c114610161578063f96dae0a146101a057600080fd5b806306fdde03146100ae5780630dcc4b44146100cc57806318160ddd146100e15780632e17de78146100f85780634e71d92d1461010b575b600080fd5b6100b66101c7565b6040516100c39190610658565b60405180910390f35b6100df6100da3660046106a6565b610255565b005b6100ea60035481565b6040519081526020016100c3565b6100df6101063660046106a6565b610325565b6100ea610401565b6100ea6101213660046106bf565b60026020526000908152604090205481565b6100ea6101413660046106bf565b6104ce565b6100df6101543660046106a6565b610502565b6100b66105a1565b6101887f000000000000000000000000000000000000000000000000000000000000000081565b6040516001600160a01b0390911681526020016100c3565b6101887f000000000000000000000000000000000000000000000000000000000000000081565b600080546101d4906106e8565b80601f0160208091040260200160405190810160405280929190818152602001828054610200906106e8565b801561024d5780601f106102225761010080835404028352916020019161024d565b820191906000526020600020905b81548152906001019060200180831161023057829003601f168201915b505050505081565b6040516323b872dd60e01b8152336004820152306024820152604481018290527f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316906323b872dd906064016020604051808303816000875af11580156102c8573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906102ec919061071c565b50600354610302670de0b6b3a764000083610754565b61030c919061076b565b6004600082825461031d919061078d565b909155505050565b61032e336105ae565b336000908152600260205260408120805483929061034d9084906107a0565b92505081905550806003600082825461036691906107a0565b909155505060405163a9059cbb60e01b8152336004820152602481018290527f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03169063a9059cbb906044015b6020604051808303816000875af11580156103d9573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906103fd919061071c565b5050565b600061040c336105ae565b3360009081526006602052604090205480156104c95733600081815260066020526040808220919091555163a9059cbb60e01b81526004810191909152602481018290526001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000169063a9059cbb906044016020604051808303816000875af11580156104a3573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906104c7919061071c565b505b919050565b60006104d982610603565b6001600160a01b0383166000908152600660205260409020546104fc919061078d565b92915050565b61050b336105ae565b336000908152600260205260408120805483929061052a90849061078d565b925050819055508060036000828254610543919061078d565b90915550506040516323b872dd60e01b8152336004820152306024820152604481018290527f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316906323b872dd906064016103ba565b600180546101d4906106e8565b6105b781610603565b6001600160a01b038216600090815260066020526040812080549091906105df90849061078d565b90915550506004546001600160a01b03909116600090815260056020526040902055565b6001600160a01b0381166000908152600260209081526040808320546005909252822054600454670de0b6b3a76400009161063d916107a0565b6106479083610754565b610651919061076b565b9392505050565b600060208083528351808285015260005b8181101561068557858101830151858201604001528201610669565b506000604082860101526040601f19601f8301168501019250505092915050565b6000602082840312156106b857600080fd5b5035919050565b6000602082840312156106d157600080fd5b81356001600160a01b038116811461065157600080fd5b600181811c908216806106fc57607f821691505b6020821081036104c757634e487b7160e01b600052602260045260246000fd5b60006020828403121561072e57600080fd5b8151801515811461065157600080fd5b634e487b7160e01b600052601160045260246000fd5b80820281158282048414176104fc576104fc61073e565b60008261078857634e487b7160e01b600052601260045260246000fd5b500490565b808201808211156104fc576104fc61073e565b818103818111156104fc576104fc61073e56fea2646970667358221220d09ccc68c0f920daf3f0fc6585357437f3c06028a9f07e0b1da5902723bf61ed64736f6c63430008120033a2646970667358221220cf5f4fe81f1d6f87e22250e5922fb2ae57a95510a48ee82a193de9e76886669964736f6c63430008120033",
+    sourceMap:
+      "158:423:46:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;235:344;;;;;;:::i;:::-;;:::i;:::-;;;399:13;442:5;461:6;481:16;511:12;415:118;;;;;:::i;:::-;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;548:24:46;;399:134;;-1:-1:-1;;;;;;548:24:46;;;;;;;;389:190;235:344;;;;:::o;-1:-1:-1:-;;;;;;;;:::o;14:127:53:-;75:10;70:3;66:20;63:1;56:31;106:4;103:1;96:15;130:4;127:1;120:15;146:719;189:5;242:3;235:4;227:6;223:17;219:27;209:55;;260:1;257;250:12;209:55;296:6;283:20;322:18;359:2;355;352:10;349:36;;;365:18;;:::i;:::-;440:2;434:9;408:2;494:13;;-1:-1:-1;;490:22:53;;;514:2;486:31;482:40;470:53;;;538:18;;;558:22;;;535:46;532:72;;;584:18;;:::i;:::-;624:10;620:2;613:22;659:2;651:6;644:18;705:3;698:4;693:2;685:6;681:15;677:26;674:35;671:55;;;722:1;719;712:12;671:55;786:2;779:4;771:6;767:17;760:4;752:6;748:17;735:54;833:1;826:4;821:2;813:6;809:15;805:26;798:37;853:6;844:15;;;;;;146:719;;;;:::o;870:173::-;938:20;;-1:-1:-1;;;;;987:31:53;;977:42;;967:70;;1033:1;1030;1023:12;967:70;870:173;;;:::o;1048:692::-;1154:6;1162;1170;1178;1231:3;1219:9;1210:7;1206:23;1202:33;1199:53;;;1248:1;1245;1238:12;1199:53;1288:9;1275:23;1317:18;1358:2;1350:6;1347:14;1344:34;;;1374:1;1371;1364:12;1344:34;1397:50;1439:7;1430:6;1419:9;1415:22;1397:50;:::i;:::-;1387:60;;1500:2;1489:9;1485:18;1472:32;1456:48;;1529:2;1519:8;1516:16;1513:36;;;1545:1;1542;1535:12;1513:36;;1568:52;1612:7;1601:8;1590:9;1586:24;1568:52;:::i;:::-;1558:62;;;1639:38;1673:2;1662:9;1658:18;1639:38;:::i;:::-;1629:48;;1696:38;1730:2;1719:9;1715:18;1696:38;:::i;:::-;1686:48;;1048:692;;;;;;;:::o;1745:423::-;1787:3;1825:5;1819:12;1852:6;1847:3;1840:19;1877:1;1887:162;1901:6;1898:1;1895:13;1887:162;;;1963:4;2019:13;;;2015:22;;2009:29;1991:11;;;1987:20;;1980:59;1916:12;1887:162;;;1891:3;2094:1;2087:4;2078:6;2073:3;2069:16;2065:27;2058:38;2157:4;2150:2;2146:7;2141:2;2133:6;2129:15;2125:29;2120:3;2116:39;2112:50;2105:57;;;1745:423;;;;:::o;2173:583::-;2426:3;2415:9;2408:22;2389:4;2453:46;2494:3;2483:9;2479:19;2471:6;2453:46;:::i;:::-;2547:9;2539:6;2535:22;2530:2;2519:9;2515:18;2508:50;2575:33;2601:6;2593;2575:33;:::i;:::-;-1:-1:-1;;;;;2682:15:53;;;2677:2;2662:18;;2655:43;2734:15;;;;2729:2;2714:18;;;2707:43;;;;-1:-1:-1;2567:41:53;2173:583;-1:-1:-1;;;2173:583:53:o",
+    linkReferences: {},
+  },
+  methodIdentifiers: {
+    "deploy(string,string,address,address)": "c6c76623",
+  },
+  rawMetadata:
+    '{"compiler":{"version":"0.8.18+commit.87f61d96"},"language":"Solidity","output":{"abi":[{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"dao","type":"address"}],"name":"DAOCreated","type":"event"},{"inputs":[{"internalType":"string","name":"_name","type":"string"},{"internalType":"string","name":"_image","type":"string"},{"internalType":"address","name":"_governanceToken","type":"address"},{"internalType":"address","name":"_rewardToken","type":"address"}],"name":"deploy","outputs":[],"stateMutability":"nonpayable","type":"function"}],"devdoc":{"kind":"dev","methods":{},"version":1},"userdoc":{"kind":"user","methods":{},"version":1}},"settings":{"compilationTarget":{"src/VidefiDAODeployer.sol":"VidefiDAODeployer"},"evmVersion":"paris","libraries":{},"metadata":{"bytecodeHash":"ipfs"},"optimizer":{"enabled":true,"runs":200},"remappings":[":@openzeppelin/=node_modules/@openzeppelin/",":ds-test/=lib/forge-std/lib/ds-test/src/",":forge-std/=lib/forge-std/src/"]},"sources":{"node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol":{"keccak256":"0x287b55befed2961a7eabd7d7b1b2839cbca8a5b80ef8dcbb25ed3d4c2002c305","license":"MIT","urls":["bzz-raw://bd39944e8fc06be6dbe2dd1d8449b5336e23c6a7ba3e8e9ae5ae0f37f35283f5","dweb:/ipfs/QmPV3FGYjVwvKSgAXKUN3r9T9GwniZz83CxBpM7vyj2G53"]},"src/VidefiDAO.sol":{"keccak256":"0xbf8c46145c27cb5ff4d418f099b2298aec07bceeff2e994937d7901b90609a1a","license":"MIT","urls":["bzz-raw://585beeed94f02c27951e19cf49db3bf6fea21d04cfd4191a5056477dec9078d1","dweb:/ipfs/QmafbG6jPYeok2eeaF9ytLMNzBaFhJF3hjnDdkz8F96gUE"]},"src/VidefiDAODeployer.sol":{"keccak256":"0x2af22efb6a1247fe2f787186b19ca27f569cfc52d2caacd6bcd15af39947a4ef","license":"MIT","urls":["bzz-raw://06a15aaab5cf566876099d56032d2407e29cd00b8338f911a3a19646acd5ca7b","dweb:/ipfs/QmPcDcnDjR6RXLfhTJRfVdFAiemkFKUkshSwB62JJ9DyzJ"]}},"version":1}',
+  metadata: {
+    compiler: {
+      version: "0.8.18+commit.87f61d96",
+    },
+    language: "Solidity",
+    output: {
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "dao",
+              type: "address",
+              indexed: true,
+            },
+          ],
+          type: "event",
+          name: "DAOCreated",
+          anonymous: false,
+        },
+        {
+          inputs: [
+            {
+              internalType: "string",
+              name: "_name",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_image",
+              type: "string",
+            },
+            {
+              internalType: "address",
+              name: "_governanceToken",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "_rewardToken",
+              type: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "function",
+          name: "deploy",
+        },
+      ],
+      devdoc: {
+        kind: "dev",
+        methods: {},
+        version: 1,
+      },
+      userdoc: {
+        kind: "user",
+        methods: {},
+        version: 1,
+      },
+    },
+    settings: {
+      remappings: [
+        ":@openzeppelin/=node_modules/@openzeppelin/",
+        ":ds-test/=lib/forge-std/lib/ds-test/src/",
+        ":forge-std/=lib/forge-std/src/",
+      ],
+      optimizer: {
+        enabled: true,
+        runs: 200,
+      },
+      metadata: {
+        bytecodeHash: "ipfs",
+      },
+      compilationTarget: {
+        "src/VidefiDAODeployer.sol": "VidefiDAODeployer",
+      },
+      libraries: {},
+    },
+    sources: {
+      "node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+        keccak256:
+          "0x287b55befed2961a7eabd7d7b1b2839cbca8a5b80ef8dcbb25ed3d4c2002c305",
+        urls: [
+          "bzz-raw://bd39944e8fc06be6dbe2dd1d8449b5336e23c6a7ba3e8e9ae5ae0f37f35283f5",
+          "dweb:/ipfs/QmPV3FGYjVwvKSgAXKUN3r9T9GwniZz83CxBpM7vyj2G53",
+        ],
+        license: "MIT",
+      },
+      "src/VidefiDAO.sol": {
+        keccak256:
+          "0xbf8c46145c27cb5ff4d418f099b2298aec07bceeff2e994937d7901b90609a1a",
+        urls: [
+          "bzz-raw://585beeed94f02c27951e19cf49db3bf6fea21d04cfd4191a5056477dec9078d1",
+          "dweb:/ipfs/QmafbG6jPYeok2eeaF9ytLMNzBaFhJF3hjnDdkz8F96gUE",
+        ],
+        license: "MIT",
+      },
+      "src/VidefiDAODeployer.sol": {
+        keccak256:
+          "0x2af22efb6a1247fe2f787186b19ca27f569cfc52d2caacd6bcd15af39947a4ef",
+        urls: [
+          "bzz-raw://06a15aaab5cf566876099d56032d2407e29cd00b8338f911a3a19646acd5ca7b",
+          "dweb:/ipfs/QmPcDcnDjR6RXLfhTJRfVdFAiemkFKUkshSwB62JJ9DyzJ",
+        ],
+        license: "MIT",
+      },
+    },
+    version: 1,
+  },
+  ast: {
+    absolutePath: "src/VidefiDAODeployer.sol",
+    id: 34572,
+    exportedSymbols: {
+      IERC20: [30059],
+      VidefiDAO: [34530],
+      VidefiDAODeployer: [34571],
+    },
+    nodeType: "SourceUnit",
+    src: "32:550:46",
+    nodes: [
+      {
+        id: 34532,
+        nodeType: "PragmaDirective",
+        src: "32:23:46",
+        nodes: [],
+        literals: ["solidity", "0.8", ".18"],
+      },
+      {
+        id: 34533,
+        nodeType: "ImportDirective",
+        src: "57:56:46",
+        nodes: [],
+        absolutePath:
+          "node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol",
+        file: "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+        nameLocation: "-1:-1:-1",
+        scope: 34572,
+        sourceUnit: 30060,
+        symbolAliases: [],
+        unitAlias: "",
+      },
+      {
+        id: 34535,
+        nodeType: "ImportDirective",
+        src: "114:42:46",
+        nodes: [],
+        absolutePath: "src/VidefiDAO.sol",
+        file: "./VidefiDAO.sol",
+        nameLocation: "-1:-1:-1",
+        scope: 34572,
+        sourceUnit: 34531,
+        symbolAliases: [
+          {
+            foreign: {
+              id: 34534,
+              name: "VidefiDAO",
+              nodeType: "Identifier",
+              overloadedDeclarations: [],
+              referencedDeclaration: 34530,
+              src: "122:9:46",
+              typeDescriptions: {},
+            },
+            nameLocation: "-1:-1:-1",
+          },
+        ],
+        unitAlias: "",
+      },
+      {
+        id: 34571,
+        nodeType: "ContractDefinition",
+        src: "158:423:46",
+        nodes: [
+          {
+            id: 34539,
+            nodeType: "EventDefinition",
+            src: "191:38:46",
+            nodes: [],
+            anonymous: false,
+            eventSelector:
+              "9fcbb6a401790bae8845ece14b8ff9237eef958a6fbd81b5eb779be08de1cc32",
+            name: "DAOCreated",
+            nameLocation: "197:10:46",
+            parameters: {
+              id: 34538,
+              nodeType: "ParameterList",
+              parameters: [
+                {
+                  constant: false,
+                  id: 34537,
+                  indexed: true,
+                  mutability: "mutable",
+                  name: "dao",
+                  nameLocation: "224:3:46",
+                  nodeType: "VariableDeclaration",
+                  scope: 34539,
+                  src: "208:19:46",
+                  stateVariable: false,
+                  storageLocation: "default",
+                  typeDescriptions: {
+                    typeIdentifier: "t_address",
+                    typeString: "address",
+                  },
+                  typeName: {
+                    id: 34536,
+                    name: "address",
+                    nodeType: "ElementaryTypeName",
+                    src: "208:7:46",
+                    stateMutability: "nonpayable",
+                    typeDescriptions: {
+                      typeIdentifier: "t_address",
+                      typeString: "address",
+                    },
+                  },
+                  visibility: "internal",
+                },
+              ],
+              src: "207:21:46",
+            },
+          },
+          {
+            id: 34570,
+            nodeType: "FunctionDefinition",
+            src: "235:344:46",
+            nodes: [],
+            body: {
+              id: 34569,
+              nodeType: "Block",
+              src: "389:190:46",
+              nodes: [],
+              statements: [
+                {
+                  assignments: [34552],
+                  declarations: [
+                    {
+                      constant: false,
+                      id: 34552,
+                      mutability: "mutable",
+                      name: "dao",
+                      nameLocation: "409:3:46",
+                      nodeType: "VariableDeclaration",
+                      scope: 34569,
+                      src: "399:13:46",
+                      stateVariable: false,
+                      storageLocation: "default",
+                      typeDescriptions: {
+                        typeIdentifier: "t_contract$_VidefiDAO_$34530",
+                        typeString: "contract VidefiDAO",
+                      },
+                      typeName: {
+                        id: 34551,
+                        nodeType: "UserDefinedTypeName",
+                        pathNode: {
+                          id: 34550,
+                          name: "VidefiDAO",
+                          nameLocations: ["399:9:46"],
+                          nodeType: "IdentifierPath",
+                          referencedDeclaration: 34530,
+                          src: "399:9:46",
+                        },
+                        referencedDeclaration: 34530,
+                        src: "399:9:46",
+                        typeDescriptions: {
+                          typeIdentifier: "t_contract$_VidefiDAO_$34530",
+                          typeString: "contract VidefiDAO",
+                        },
+                      },
+                      visibility: "internal",
+                    },
+                  ],
+                  id: 34561,
+                  initialValue: {
+                    arguments: [
+                      {
+                        id: 34556,
+                        name: "_name",
+                        nodeType: "Identifier",
+                        overloadedDeclarations: [],
+                        referencedDeclaration: 34541,
+                        src: "442:5:46",
+                        typeDescriptions: {
+                          typeIdentifier: "t_string_memory_ptr",
+                          typeString: "string memory",
+                        },
+                      },
+                      {
+                        id: 34557,
+                        name: "_image",
+                        nodeType: "Identifier",
+                        overloadedDeclarations: [],
+                        referencedDeclaration: 34543,
+                        src: "461:6:46",
+                        typeDescriptions: {
+                          typeIdentifier: "t_string_memory_ptr",
+                          typeString: "string memory",
+                        },
+                      },
+                      {
+                        id: 34558,
+                        name: "_governanceToken",
+                        nodeType: "Identifier",
+                        overloadedDeclarations: [],
+                        referencedDeclaration: 34545,
+                        src: "481:16:46",
+                        typeDescriptions: {
+                          typeIdentifier: "t_address",
+                          typeString: "address",
+                        },
+                      },
+                      {
+                        id: 34559,
+                        name: "_rewardToken",
+                        nodeType: "Identifier",
+                        overloadedDeclarations: [],
+                        referencedDeclaration: 34547,
+                        src: "511:12:46",
+                        typeDescriptions: {
+                          typeIdentifier: "t_address",
+                          typeString: "address",
+                        },
+                      },
+                    ],
+                    expression: {
+                      argumentTypes: [
+                        {
+                          typeIdentifier: "t_string_memory_ptr",
+                          typeString: "string memory",
+                        },
+                        {
+                          typeIdentifier: "t_string_memory_ptr",
+                          typeString: "string memory",
+                        },
+                        {
+                          typeIdentifier: "t_address",
+                          typeString: "address",
+                        },
+                        {
+                          typeIdentifier: "t_address",
+                          typeString: "address",
+                        },
+                      ],
+                      id: 34555,
+                      isConstant: false,
+                      isLValue: false,
+                      isPure: false,
+                      lValueRequested: false,
+                      nodeType: "NewExpression",
+                      src: "415:13:46",
+                      typeDescriptions: {
+                        typeIdentifier:
+                          "t_function_creation_nonpayable$_t_string_memory_ptr_$_t_string_memory_ptr_$_t_address_$_t_address_$returns$_t_contract$_VidefiDAO_$34530_$",
+                        typeString:
+                          "function (string memory,string memory,address,address) returns (contract VidefiDAO)",
+                      },
+                      typeName: {
+                        id: 34554,
+                        nodeType: "UserDefinedTypeName",
+                        pathNode: {
+                          id: 34553,
+                          name: "VidefiDAO",
+                          nameLocations: ["419:9:46"],
+                          nodeType: "IdentifierPath",
+                          referencedDeclaration: 34530,
+                          src: "419:9:46",
+                        },
+                        referencedDeclaration: 34530,
+                        src: "419:9:46",
+                        typeDescriptions: {
+                          typeIdentifier: "t_contract$_VidefiDAO_$34530",
+                          typeString: "contract VidefiDAO",
+                        },
+                      },
+                    },
+                    id: 34560,
+                    isConstant: false,
+                    isLValue: false,
+                    isPure: false,
+                    kind: "functionCall",
+                    lValueRequested: false,
+                    nameLocations: [],
+                    names: [],
+                    nodeType: "FunctionCall",
+                    src: "415:118:46",
+                    tryCall: false,
+                    typeDescriptions: {
+                      typeIdentifier: "t_contract$_VidefiDAO_$34530",
+                      typeString: "contract VidefiDAO",
+                    },
+                  },
+                  nodeType: "VariableDeclarationStatement",
+                  src: "399:134:46",
+                },
+                {
+                  eventCall: {
+                    arguments: [
+                      {
+                        arguments: [
+                          {
+                            id: 34565,
+                            name: "dao",
+                            nodeType: "Identifier",
+                            overloadedDeclarations: [],
+                            referencedDeclaration: 34552,
+                            src: "567:3:46",
+                            typeDescriptions: {
+                              typeIdentifier: "t_contract$_VidefiDAO_$34530",
+                              typeString: "contract VidefiDAO",
+                            },
+                          },
+                        ],
+                        expression: {
+                          argumentTypes: [
+                            {
+                              typeIdentifier: "t_contract$_VidefiDAO_$34530",
+                              typeString: "contract VidefiDAO",
+                            },
+                          ],
+                          id: 34564,
+                          isConstant: false,
+                          isLValue: false,
+                          isPure: true,
+                          lValueRequested: false,
+                          nodeType: "ElementaryTypeNameExpression",
+                          src: "559:7:46",
+                          typeDescriptions: {
+                            typeIdentifier: "t_type$_t_address_$",
+                            typeString: "type(address)",
+                          },
+                          typeName: {
+                            id: 34563,
+                            name: "address",
+                            nodeType: "ElementaryTypeName",
+                            src: "559:7:46",
+                            typeDescriptions: {},
+                          },
+                        },
+                        id: 34566,
+                        isConstant: false,
+                        isLValue: false,
+                        isPure: false,
+                        kind: "typeConversion",
+                        lValueRequested: false,
+                        nameLocations: [],
+                        names: [],
+                        nodeType: "FunctionCall",
+                        src: "559:12:46",
+                        tryCall: false,
+                        typeDescriptions: {
+                          typeIdentifier: "t_address",
+                          typeString: "address",
+                        },
+                      },
+                    ],
+                    expression: {
+                      argumentTypes: [
+                        {
+                          typeIdentifier: "t_address",
+                          typeString: "address",
+                        },
+                      ],
+                      id: 34562,
+                      name: "DAOCreated",
+                      nodeType: "Identifier",
+                      overloadedDeclarations: [],
+                      referencedDeclaration: 34539,
+                      src: "548:10:46",
+                      typeDescriptions: {
+                        typeIdentifier:
+                          "t_function_event_nonpayable$_t_address_$returns$__$",
+                        typeString: "function (address)",
+                      },
+                    },
+                    id: 34567,
+                    isConstant: false,
+                    isLValue: false,
+                    isPure: false,
+                    kind: "functionCall",
+                    lValueRequested: false,
+                    nameLocations: [],
+                    names: [],
+                    nodeType: "FunctionCall",
+                    src: "548:24:46",
+                    tryCall: false,
+                    typeDescriptions: {
+                      typeIdentifier: "t_tuple$__$",
+                      typeString: "tuple()",
+                    },
+                  },
+                  id: 34568,
+                  nodeType: "EmitStatement",
+                  src: "543:29:46",
+                },
+              ],
+            },
+            functionSelector: "c6c76623",
+            implemented: true,
+            kind: "function",
+            modifiers: [],
+            name: "deploy",
+            nameLocation: "244:6:46",
+            parameters: {
+              id: 34548,
+              nodeType: "ParameterList",
+              parameters: [
+                {
+                  constant: false,
+                  id: 34541,
+                  mutability: "mutable",
+                  name: "_name",
+                  nameLocation: "274:5:46",
+                  nodeType: "VariableDeclaration",
+                  scope: 34570,
+                  src: "260:19:46",
+                  stateVariable: false,
+                  storageLocation: "memory",
+                  typeDescriptions: {
+                    typeIdentifier: "t_string_memory_ptr",
+                    typeString: "string",
+                  },
+                  typeName: {
+                    id: 34540,
+                    name: "string",
+                    nodeType: "ElementaryTypeName",
+                    src: "260:6:46",
+                    typeDescriptions: {
+                      typeIdentifier: "t_string_storage_ptr",
+                      typeString: "string",
+                    },
+                  },
+                  visibility: "internal",
+                },
+                {
+                  constant: false,
+                  id: 34543,
+                  mutability: "mutable",
+                  name: "_image",
+                  nameLocation: "303:6:46",
+                  nodeType: "VariableDeclaration",
+                  scope: 34570,
+                  src: "289:20:46",
+                  stateVariable: false,
+                  storageLocation: "memory",
+                  typeDescriptions: {
+                    typeIdentifier: "t_string_memory_ptr",
+                    typeString: "string",
+                  },
+                  typeName: {
+                    id: 34542,
+                    name: "string",
+                    nodeType: "ElementaryTypeName",
+                    src: "289:6:46",
+                    typeDescriptions: {
+                      typeIdentifier: "t_string_storage_ptr",
+                      typeString: "string",
+                    },
+                  },
+                  visibility: "internal",
+                },
+                {
+                  constant: false,
+                  id: 34545,
+                  mutability: "mutable",
+                  name: "_governanceToken",
+                  nameLocation: "327:16:46",
+                  nodeType: "VariableDeclaration",
+                  scope: 34570,
+                  src: "319:24:46",
+                  stateVariable: false,
+                  storageLocation: "default",
+                  typeDescriptions: {
+                    typeIdentifier: "t_address",
+                    typeString: "address",
+                  },
+                  typeName: {
+                    id: 34544,
+                    name: "address",
+                    nodeType: "ElementaryTypeName",
+                    src: "319:7:46",
+                    stateMutability: "nonpayable",
+                    typeDescriptions: {
+                      typeIdentifier: "t_address",
+                      typeString: "address",
+                    },
+                  },
+                  visibility: "internal",
+                },
+                {
+                  constant: false,
+                  id: 34547,
+                  mutability: "mutable",
+                  name: "_rewardToken",
+                  nameLocation: "361:12:46",
+                  nodeType: "VariableDeclaration",
+                  scope: 34570,
+                  src: "353:20:46",
+                  stateVariable: false,
+                  storageLocation: "default",
+                  typeDescriptions: {
+                    typeIdentifier: "t_address",
+                    typeString: "address",
+                  },
+                  typeName: {
+                    id: 34546,
+                    name: "address",
+                    nodeType: "ElementaryTypeName",
+                    src: "353:7:46",
+                    stateMutability: "nonpayable",
+                    typeDescriptions: {
+                      typeIdentifier: "t_address",
+                      typeString: "address",
+                    },
+                  },
+                  visibility: "internal",
+                },
+              ],
+              src: "250:129:46",
+            },
+            returnParameters: {
+              id: 34549,
+              nodeType: "ParameterList",
+              parameters: [],
+              src: "389:0:46",
+            },
+            scope: 34571,
+            stateMutability: "nonpayable",
+            virtual: false,
+            visibility: "external",
+          },
+        ],
+        abstract: false,
+        baseContracts: [],
+        canonicalName: "VidefiDAODeployer",
+        contractDependencies: [34530],
+        contractKind: "contract",
+        fullyImplemented: true,
+        linearizedBaseContracts: [34571],
+        name: "VidefiDAODeployer",
+        nameLocation: "167:17:46",
+        scope: 34572,
+        usedErrors: [],
+      },
+    ],
+    license: "MIT",
+  },
+  id: 46,
+} as const;
