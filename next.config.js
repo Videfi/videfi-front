@@ -12,6 +12,8 @@ const nextConfig = {
     return config;
   },
   images: {
+    loader: "akamai",
+    path: "",
     remotePatterns: [
       {
         protocol: "https",
@@ -27,6 +29,7 @@ const nextConfig = {
       },
     ],
   },
+  trailingSlash: true,
 };
 
 module.exports = nextConfig;
