@@ -41,6 +41,8 @@ export default function test() {
       ).filter((val: any) => val !== undefined)
     );
   }
+  const { data: Video } = useCollection(polybase.collection("Video"));
+  console.log(formatDataFetch(Video));
   return (
     <div className="space-x-3">
       <button
