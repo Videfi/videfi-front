@@ -36,14 +36,21 @@ export default function MembershipCard({
           alt="thumbnail"
           className="rounded-t"
         />
-        <div className="absolute top-3 right-3 px-2 py-1 bg-indigo-500 rounded-lg">
+        <div
+          className={cn(
+            "absolute top-3 right-3 px-2 py-1 text-gray-200 rounded-lg",
+            tier === "Gold" && "bg-yellow-500",
+            tier === "Silver" && "bg-gray-400",
+            tier === "Bronze" && "bg-orange-800"
+          )}
+        >
           {tier}
         </div>
       </div>
       <div className="w-full flex space-x-3 p-4">
         <Avatar className="dark">
           <AvatarImage src="https://github.com/shadcn.png-x" />
-          <AvatarFallback className="bg-indigo-500">CN</AvatarFallback>
+          <AvatarFallback className="bg-indigo-400">BP</AvatarFallback>
         </Avatar>
         <div>
           <p className="">{owner}</p>

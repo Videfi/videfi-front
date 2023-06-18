@@ -288,7 +288,7 @@ export default function CreateVideo() {
             </SelectContent>
           </Select>
           <Button
-            className="bg-indigo-600 text-white hover:bg-indigo-700 w-full text-lg"
+            className="bg-indigo-600 text-white hover:bg-indigo-700 w-full"
             onClick={handleUpload}
           >
             {uploading ? (
@@ -297,7 +297,7 @@ export default function CreateVideo() {
               </>
             ) : (
               <>
-                <UploadIcon className="mr-3" />
+                <UploadIcon className="mr-3" size={17} />
                 Upload
               </>
             )}

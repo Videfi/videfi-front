@@ -19,7 +19,7 @@ export default function DAO() {
         <DAOBar />
         <div className="h-full w-full p-5 grid grid-cols-3 gap-3">
           <DaoCard
-            thumbnail="https://zipmex.com/static/4da29a1a3c35bad2f2b4af35aa349db8/1bbe7/APECOIN-explained.jpg"
+            thumbnail="/images/ape-dao.png"
             name="Ape DAO"
             daoAddr={"0x"}
           />
