@@ -4,6 +4,9 @@ import { EyeOffIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import { truncateWalletAddress } from "@/utils/truncate.util";
+import { durationFormatter } from "@/utils/durationFormatter.util";
+import { generateRandomTimeAgoString } from "@/utils/timeMock.util";
 
 type VideoCardProps = {
   cid: string;
@@ -46,16 +49,17 @@ export default function VideoCard({
           "w-[360px] h-[200px] bg-indigo-500 rounded-t-lg relative"
         )}
       >
-        <Image
-          src={thumbnail}
-          width={360}
-          height={200}
-          alt="thumbnail"
-          className={cn("absolute", !watchable && "opacity-50")}
-        />
+        <div className="w-[360px] h-[200px] absolute">
+          <Image
+            src={thumbnail}
+            fill={true}
+            alt="thumbnail"
+            className={cn("rounded-t-lg", !watchable && "opacity-50")}
+          />
+        </div>
         {watchable ? (
           <div className="bg-black px-1.5 py-0.5 text-sm absolute bottom-2 right-2">
-            {duration}
+            {durationFormatter(+duration)}
           </div>
         ) : (
           <div className="select-none w-[360px] h-[200px] absolute rounded-t-lg flex items-center justify-center flex-col text-white">
@@ -74,9 +78,11 @@ export default function VideoCard({
         </Avatar>
         <div>
           <p className="">{title}</p>
-          <p className="text-gray-400 text-sm">{owner}</p>
           <p className="text-gray-400 text-sm">
-            {views} views - {createdAt}
+            {truncateWalletAddress(owner, 25)}
+          </p>
+          <p className="text-gray-400 text-sm">
+            {views} views - {generateRandomTimeAgoString()}
           </p>
         </div>
       </div>
