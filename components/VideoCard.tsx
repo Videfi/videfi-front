@@ -31,6 +31,12 @@ export default function VideoCard({
 
   const router = useRouter();
 
+  const [datsAgoMock, setDatsAgoMock] = useState("8 minutes ago");
+  useEffect(() => {
+    const randomMock = generateRandomTimeAgoString();
+    setDatsAgoMock(`${randomMock}`);
+  }, []);
+
   // useEffect(() => {
   //   const randomMock = Math.random() >= 0.4;
   //   setWatchable(randomMock);
@@ -82,7 +88,7 @@ export default function VideoCard({
             {truncateWalletAddress(owner, 25)}
           </p>
           <p className="text-gray-400 text-sm">
-            {views} views - {generateRandomTimeAgoString()}
+            {views} views - {datsAgoMock}
           </p>
         </div>
       </div>

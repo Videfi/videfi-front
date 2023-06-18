@@ -31,7 +31,7 @@ export default function VideoActionBar({ id, like }: PropsType) {
   const limitAmount = useLimitAmount(nftAddress);
   const totalSupply = useTotalSupply(nftAddress);
 
-  console.log({ allowance })
+  console.log({ allowance });
 
   const handleMint = async () => {
     const publicClient = getPublicClient();
@@ -61,23 +61,20 @@ export default function VideoActionBar({ id, like }: PropsType) {
 
   return (
     <div className="flex space-x-3">
-      <Button className="bg-vdf-gray hover:bg-vdf-gray hover:opacity-70">
-        Offer Ad
-      </Button>
+      <Button className="bg-gray-200 hover:opacity-70">Offer Ad</Button>
       <a href={openseaUrl} target="_blank">
-        <Button className="bg-vdf-gray hover:bg-vdf-gray hover:opacity-70">
-          Buy
-        </Button>
+        <Button className="bg-gray-200 hover:opacity-70">Buy</Button>
       </a>
       <Button
-        className="bg-vdf-gray hover:bg-vdf-gray hover:opacity-70"
+        className="bg-gray-200 hover:opacity-70"
+        // className="bg-vdf-gray hover:bg-vdf-gray hover:opacity-70"
         onClick={handleMint}
       >
         <span>
           {totalSupply}/{limitAmount} Mint
         </span>
       </Button>
-      <Button className="bg-vdf-gray hover:bg-vdf-gray hover:opacity-70">
+      <Button className="bg-gray-200 hover:opacity-70">
         <ThumbsUp className="mr-2" size={20} />
         {like}
       </Button>

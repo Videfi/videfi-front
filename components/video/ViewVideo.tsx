@@ -6,6 +6,7 @@ import VideoActionBar from "./VideoActionBar";
 import VideoCard from "../VideoCard";
 import { useContent } from "@/hooks/useContent";
 import { useIPFSMetadata } from "@/hooks/useIPFSMetadata";
+import { truncateWalletAddress } from "@/utils/truncate.util";
 
 export default function ViewVideo({ id }: { id: string }) {
   const contentData = useContent(id);
@@ -28,7 +29,9 @@ export default function ViewVideo({ id }: { id: string }) {
           </Avatar>
           <div className="w-full flex justify-between">
             <div>
-              <p className="text-gray-300">{owner}</p>
+              <p className="text-gray-300">
+                {truncateWalletAddress(owner, 25)}
+              </p>
               <p className="text-gray-400 text-sm">8 minutes ago</p>
             </div>
             <VideoActionBar id={id} like={123} />
@@ -40,7 +43,7 @@ export default function ViewVideo({ id }: { id: string }) {
         {[1, 2].map((id, index) => (
           <VideoCard
             title="Hello, Wolrd !"
-            duration="3:33"
+            duration="444"
             views={123}
             owner="helloworld.eth"
             thumbnail="https://i.ytimg.com/vi/5qap5aO4i9A/maxresdefault.jpg"
