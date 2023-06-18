@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { PictureInPictureIcon, PlusCircleIcon, UploadIcon } from "lucide-react";
+import { PlusCircleIcon, UploadIcon } from "lucide-react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 
