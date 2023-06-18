@@ -46,5 +46,8 @@
   "devDependencies": {
     "@graphprotocol/client-cli": "^3.0.0",
     "zustand": "^4.3.8"
+  },
+  "engines": {
+    "node": "14.21.3"
   }
 }
