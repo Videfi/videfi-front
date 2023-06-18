@@ -49,7 +49,7 @@ export default function Test() {
         type="button"
         onClick={async () => {
           setLoading(false);
-          const res = await createUser({ name: "123" });
+          const res = await createUser({ name: "123", address: "" });
           console.log(res);
           setLoading(true);
           console.log(isLoading);
@@ -76,7 +76,6 @@ export default function Test() {
             setLoading(false);
             const res = await createVideo({
               address: "address",
-              index: "index",
               duration: "5",
             });
             console.log(res);
@@ -112,7 +111,8 @@ export default function Test() {
       <div>
         <button
           onClick={async () => {
-            await createTag({ name: "4" });
+            // Game News Animal
+            await createTag({ name: "Animal" });
           }}
         >
           Add Tag

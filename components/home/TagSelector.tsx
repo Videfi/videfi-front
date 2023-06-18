@@ -7,12 +7,6 @@ export default function TagSelector() {
   const polybase = usePolybase();
   const { data: Tags } = useCollection(polybase.collection("Tag"));
   const { id: tagId, setTag } = useTagStore();
-  const mockTags = [
-    { id: "1", name: "Music" },
-    { id: "2", name: "Game" },
-    { id: "3", name: "News" },
-    { id: "4", name: "Animal" },
-  ];
   return (
     <div className="mb-5 w-full">
       <button
@@ -27,7 +21,7 @@ export default function TagSelector() {
       </button>
       {(Object.keys(formatDataFetch(Tags)).length > 0
         ? formatDataFetch(Tags)
-        : mockTags
+        : []
       ).map((tag: any, index: number) => {
         return (
           <button
