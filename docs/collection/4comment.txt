@@ -1,0 +1,32 @@
+// Comment
+@public
+collection Comment {
+  id: string;
+  video: Video;
+  subComment: Comment[];
+  comment: string;
+  owner: User;
+  like: number;
+  createdAt: string;
+
+  constructor(id: string, video: Video, comment: string, owner: User, createdAt: string) {
+    this.id = id;
+    this.video = video;
+    this.comment = comment;
+    this.owner = owner;
+    this.createdAt = createdAt;
+    this.subComment = [];
+    this.like = 0;
+  }
+
+  addSubComment(comment: Comment) {
+    this.subComment.push(comment);
+  }
+
+  increaseLike() {
+    this.like = this.like + 1;
+  }
+  decreaseLike() {
+    this.like = this.like - 1;
+  }
+}
