@@ -10,65 +10,48 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import { LoaderIcon, UploadIcon, VideoIcon } from "lucide-react";
-import { dataURLtoFile } from "@/lib/fileUtils";
-import { storeVideoNFT } from "@/lib/nftStorage";
-import { getContract, parseEther } from "viem";
-import { VidefiContent } from "@/contracts/VidefiContent";
+import { UploadIcon, VideoIcon } from "lucide-react";
+import { storeImageNFT } from "@/lib/nftStorage";
+import { parseEther } from "viem";
 import { getPublicClient, getWalletClient } from "@/lib/viem";
 import { VidefiContentDeployer } from "@/contracts/VidefiContentDeployer";
 import { ADDRESSES } from "@/constants/addresses";
+import { uploadFileToLighthouse } from "@/lib/lighthouse";
 
 export default function CreateVideo() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [selectedImageFile, setSelectedImageFile] = useState<File | null>(null);
   const [videoPreviewUrl, setVideoPreviewUrl] = useState<string | null>(null);
-  const [imagePreviewFile, setImagePrevieFile] = useState<File | null>(null);
+  const [imagePreviewUrl, setImagePreviewUrl] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const inputImageRef = useRef<HTMLInputElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [limit, setLimit] = useState("1");
   const [price, setPrice] = useState("0");
-  const [paymentToken, setPaymentToken] = useState("");
+  const [paymentToken, setPaymentToken] = useState("0x2d2da8809eC403136c851d402FB94255326c28F3");
+  const [duration, setDuration] = useState(0); // seconds
 
   const [uploading, setUploading] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
 
+  // Read video duration
   useEffect(() => {
-    if (!videoRef.current || !selectedFile) {
-      return;
+    const video = videoRef.current;
+    if (video) {
+      const updateDuration = () => {
+        setDuration(video.duration);
+      };
+
+      video.addEventListener("loadedmetadata", updateDuration);
+
+      return () => video.removeEventListener("loadedmetadata", updateDuration);
     }
-
-    const handleLoadedData = () => {
-      if (!videoRef.current) {
-        return;
-      }
-
-      const canvas = document.createElement("canvas");
-      canvas.width = videoRef.current.videoWidth;
-      canvas.height = videoRef.current.videoHeight;
-      const ctx = canvas.getContext("2d");
-
-      if (ctx) {
-        ctx.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
-        const url = canvas.toDataURL();
-        const imageFile = dataURLtoFile(
-          url,
-          `${selectedFile?.name}_thumbnail.png`
-        );
-        setImagePrevieFile(imageFile);
-      }
-    };
-
-    videoRef.current.addEventListener("loadeddata", handleLoadedData);
-
-    return () => {
-      if (videoRef.current) {
-        videoRef.current.removeEventListener("loadeddata", handleLoadedData);
-      }
-    };
   }, [selectedFile]);
 
+  // Video input handlers
   const handleClickUpload = () => {
     if (inputRef.current) {
       inputRef.current.click();
@@ -91,18 +74,58 @@ export default function CreateVideo() {
     if (event.target) event.target.value = "";
   };
 
+  // Image input handlers
+  const handleClickImageUpload = () => {
+    if (inputImageRef.current) {
+      inputImageRef.current.click();
+    }
+  };
+
+  const handleChangeImageFile = (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files ? event.target.files[0] : null;
+    if (file) {
+      if (!file.type.startsWith("image/")) {
+        alert("File type not supported. Please upload an image file.");
+      } else {
+        setSelectedImageFile(file);
+        setImagePreviewUrl(URL.createObjectURL(file));
+      }
+    }
+
+    if (event.target) event.target.value = "";
+  };
+
+  // Upload handlers
+  const progressCallback = (progressData: any) => {
+    const percentageDone =
+      100 - +(progressData?.total / progressData?.uploaded)?.toFixed(2);
+    setUploadProgress(percentageDone);
+  };
+
   const handleUpload: React.MouseEventHandler<HTMLButtonElement> = async (
     e
   ) => {
     e.preventDefault();
     setUploading(true);
-    if (selectedFile && imagePreviewFile) {
-      const result = await storeVideoNFT(
+    if (selectedFile && selectedImageFile) {
+      const lighthouseResult = await uploadFileToLighthouse(
         selectedFile,
-        imagePreviewFile,
-        title,
-        description
+        progressCallback
       );
+
+      const nftMetadata = {
+        duration,
+        videoCid: lighthouseResult.data.Hash,
+      };
+
+      const result = await storeImageNFT(
+        selectedImageFile,
+        title,
+        description,
+        nftMetadata
+      );
+
+      console.log({ result });
 
       const walletClient = getWalletClient();
       const publicClient = getPublicClient();
@@ -111,9 +134,9 @@ export default function CreateVideo() {
 
       const { request } = await publicClient.simulateContract({
         account,
-        address: ADDRESSES.mumbai.VidefiContentDeployer,
+        address: ADDRESSES.goerli.VidefiContentDeployer,
         abi: VidefiContentDeployer.abi,
-        functionName: 'deploy',
+        functionName: "deploy",
         args: [
           title,
           title.slice(0, 5).toUpperCase(),
@@ -125,9 +148,10 @@ export default function CreateVideo() {
           false,
           [],
           [],
-        ]
-      })
-      const hash = await walletClient.writeContract(request)
+        ],
+      });
+
+      const hash = await walletClient.writeContract(request);
 
       const transaction = await publicClient.waitForTransactionReceipt({
         hash,
@@ -146,21 +170,23 @@ export default function CreateVideo() {
   return (
     <div className="px-10 py-5">
       <div className="flex space-x-5">
-        <div className="w-[700px] h-[470px] bg-vdf-black rounded-lg flex justify-center items-center text-gray-300 flex-col">
+        <div className="w-[700px] py-8 bg-vdf-black rounded-lg flex justify-center items-center text-gray-300 flex-col">
           <div>
             {selectedFile ? (
               <div className="w-full">
                 {videoPreviewUrl && (
-                  <video
-                    key={selectedFile?.lastModified}
-                    width="560"
-                    height="240"
-                    controls
-                    ref={videoRef}
-                  >
-                    <source src={videoPreviewUrl} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
+                  <div>
+                    <video
+                      key={selectedFile?.lastModified}
+                      width="560"
+                      height="240"
+                      controls
+                      ref={videoRef}
+                    >
+                      <source src={videoPreviewUrl} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
                 )}
               </div>
             ) : (
@@ -174,7 +200,7 @@ export default function CreateVideo() {
             )}
           </div>
 
-          <div>
+          <div className="mb-4">
             <input
               id="upload-video"
               type="file"
@@ -189,6 +215,34 @@ export default function CreateVideo() {
             >
               <UploadIcon className="mr-3" />
               Select Video File to Upload
+            </Button>
+          </div>
+
+          {imagePreviewUrl && (
+            <div>
+              <img
+                src={imagePreviewUrl}
+                alt="Image preview"
+                width="200"
+              />
+            </div>
+          )}
+
+          <div>
+            <input
+              id="upload-cover-image"
+              type="file"
+              ref={inputImageRef}
+              className="hidden"
+              accept="image/*"
+              onChange={handleChangeImageFile}
+            />
+            <Button
+              className="bg-gray-500 text-white hover:bg-gray-600 text-sm mt-5"
+              onClick={handleClickImageUpload}
+            >
+              <UploadIcon className="mr-3" />
+              Select Video Cover Image to Upload
             </Button>
           </div>
         </div>
@@ -241,7 +295,7 @@ export default function CreateVideo() {
           >
             {uploading ? (
               <>
-                <LoaderIcon className="mr-3" />
+                <span>Uploading ({uploadProgress}/100%)</span>
               </>
             ) : (
               <>

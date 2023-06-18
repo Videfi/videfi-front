@@ -7,7 +7,7 @@ import {
   darkTheme,
 } from "@rainbow-me/rainbowkit";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
-import { polygonMumbai } from "wagmi/chains";
+import { goerli, polygonMumbai } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
 
 import { PolybaseProvider } from "@polybase/react";
@@ -15,7 +15,7 @@ import { Polybase } from "@polybase/client";
 import { NAMESPACE_DEFAULT } from "@/lib/polybase/db.polybase";
 
 const { chains, publicClient } = configureChains(
-  [polygonMumbai],
+  [goerli, polygonMumbai],
   [publicProvider()]
 );
 
