@@ -1,0 +1,8 @@
+query ContentQuery($first: Int = 5) {
+  contents(first: $first) {
+    id
+    contentName
+    contentSymbol
+    tokenURI
+  }
+}

@@ -6259,4 +6259,4 @@ export const VidefiContent = {
     license: "MIT",
   },
   id: 39,
-};
+} as const
