@@ -10,31 +10,22 @@ import {
 } from "@/components/ui/table";
 import Image from "next/image";
 
-const invoices = [
+const contents: any = [
   {
     thumbnail: "https://i.ytimg.com/vi/5qap5aO4i9A/maxresdefault.jpg",
-    title: "Hello, Wolrd !",
+    title: "Lofi Music for Coding",
     amount: "1/30",
     date: "10 Feb 2023",
     view: "123",
     tag: "Music",
-    price: "10 ETH",
+    price: "5 ETH",
   },
   {
     thumbnail: "https://i.ytimg.com/vi/5qap5aO4i9A/maxresdefault.jpg",
-    title: "Hello, Wolrd !",
-    amount: "1/30",
+    title: "Lofi Music for Gaming",
+    amount: "1/15",
     date: "10 Feb 2023",
-    view: "123",
-    tag: "Music",
-    price: "10 ETH",
-  },
-  {
-    thumbnail: "https://i.ytimg.com/vi/5qap5aO4i9A/maxresdefault.jpg",
-    title: "Hello, Wolrd !",
-    amount: "1/30",
-    date: "10 Feb 2023",
-    view: "123",
+    view: "153",
     tag: "Music",
     price: "10 ETH",
   },
@@ -57,7 +48,7 @@ export function YourContentTable() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {invoices.map((content, i) => (
+          {contents.map((content: any, i: any) => (
             <TableRow key={i} className="cursor-pointer">
               <TableCell className="pl-10">
                 <div className="flex space-x-5 items-center">

@@ -12,17 +12,24 @@ const nextConfig = {
     return config;
   },
   images: {
+    loader: "akamai",
+    path: "",
     remotePatterns: [
       {
         protocol: "https",
         hostname: "i.ytimg.com",
       },
       {
-        protocol: 'https',
-        hostname: 'ipfs.io'
-      }
+        protocol: "https",
+        hostname: "ipfs.io",
+      },
+      {
+        protocol: "https",
+        hostname: "zipmex.com",
+      },
     ],
   },
+  trailingSlash: true,
 };
 
 module.exports = nextConfig;
