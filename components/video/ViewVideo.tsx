@@ -4,15 +4,23 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 import VideoActionBar from "./VideoActionBar";
 import VideoCard from "../VideoCard";
+import { useContent } from "@/hooks/useContent";
+import { useIPFSMetadata } from "@/hooks/useIPFSMetadata";
 
-export default function ViewVideo({ cid }: { cid: string }) {
+export default function ViewVideo({ id }: { id: string }) {
+  const contentData = useContent(id);
+
+  const title = contentData?.contentNFT?.content.contentName || "Untitled";
+  const owner = contentData?.contentNFT?.owner.id || "No owner";
+  const tokenURI = contentData?.contentNFT?.content.tokenURI;
+
+  const { videoCid } = useIPFSMetadata(tokenURI!);
+
   return (
     <div className="w-full h-full flex">
       <div className="w-[800px] h-full">
-        <VideoPlayer cid={cid} />
-        <p className="mt-3 text-2xl text-gray-300">
-          Hello, World ! Feat.ETHGlobro
-        </p>
+        <VideoPlayer id={videoCid!} />
+        <p className="mt-3 text-2xl text-gray-300">{title}</p>
         <div className="flex space-x-3 items-center mt-3">
           <Avatar className="dark text-gray-300">
             <AvatarImage src="https://github.com/shadcn.png-x" />
@@ -20,7 +28,7 @@ export default function ViewVideo({ cid }: { cid: string }) {
           </Avatar>
           <div className="w-full flex justify-between">
             <div>
-              <p className="text-gray-300">helloworld.eth</p>
+              <p className="text-gray-300">{owner}</p>
               <p className="text-gray-400 text-sm">8 minutes ago</p>
             </div>
             <VideoActionBar />
@@ -29,7 +37,7 @@ export default function ViewVideo({ cid }: { cid: string }) {
         <Separator className="mt-3 bg-vdf-gray" />
       </div>
       <div className="h-full flex-1 flex flex-col overflow-y-scroll items-center space-y-5 pl-5">
-        {[1, 2].map((cid, index) => (
+        {[1, 2].map((id, index) => (
           <VideoCard
             title="Hello, Wolrd !"
             duration="3:33"
@@ -37,7 +45,7 @@ export default function ViewVideo({ cid }: { cid: string }) {
             owner="helloworld.eth"
             thumbnail="https://i.ytimg.com/vi/5qap5aO4i9A/maxresdefault.jpg"
             createdAt="8 minutes ago"
-            cid={cid.toString()}
+            id={id.toString()}
             key={index}
           />
         ))}
