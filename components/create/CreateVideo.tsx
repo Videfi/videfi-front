@@ -13,9 +13,11 @@ import { Button } from "@/components/ui/button";
 import { LoaderIcon, UploadIcon, VideoIcon } from "lucide-react";
 import { dataURLtoFile } from "@/lib/fileUtils";
 import { storeVideoNFT } from "@/lib/nftStorage";
-import { parseEther } from "viem";
+import { getContract, parseEther } from "viem";
 import { VidefiContent } from "@/contracts/VidefiContent";
 import { getPublicClient, getWalletClient } from "@/lib/viem";
+import { VidefiContentDeployer } from "@/contracts/VidefiContentDeployer";
+import { ADDRESSES } from "@/constants/addresses";
 
 export default function CreateVideo() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -103,11 +105,15 @@ export default function CreateVideo() {
       );
 
       const walletClient = getWalletClient();
+      const publicClient = getPublicClient();
+
       const [account] = await walletClient.getAddresses();
 
-      const hash = await walletClient.deployContract({
-        abi: VidefiContent.abi,
+      const { request } = await publicClient.simulateContract({
         account,
+        address: ADDRESSES.mumbai.VidefiContentDeployer,
+        abi: VidefiContentDeployer.abi,
+        functionName: 'deploy',
         args: [
           title,
           title.slice(0, 5).toUpperCase(),
@@ -119,12 +125,10 @@ export default function CreateVideo() {
           false,
           [],
           [],
-          account,
-        ],
-        bytecode: VidefiContent.bytecode.object as `0x${string}`,
-      });
+        ]
+      })
+      const hash = await walletClient.writeContract(request)
 
-      const publicClient = getPublicClient();
       const transaction = await publicClient.waitForTransactionReceipt({
         hash,
       });
