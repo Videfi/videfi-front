@@ -7,12 +7,12 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Video() {
   const router = useRouter();
-  const cid = router.query.cid;
+  const id = router.query.id;
 
   return (
     <MainLayout>
       <div className={`${inter.className} w-full h-full p-5`}>
-        <ViewVideo cid={cid as string} />
+        <ViewVideo id={id as string} />
       </div>
     </MainLayout>
   );

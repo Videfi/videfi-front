@@ -9,7 +9,7 @@ import { durationFormatter } from "@/utils/durationFormatter.util";
 import { generateRandomTimeAgoString } from "@/utils/timeMock.util";
 
 type VideoCardProps = {
-  cid: string;
+  id: string;
   title: string;
   views: number;
   owner: string;
@@ -19,7 +19,7 @@ type VideoCardProps = {
 };
 
 export default function VideoCard({
-  cid,
+  id,
   title,
   views,
   owner,
@@ -27,18 +27,18 @@ export default function VideoCard({
   thumbnail,
   createdAt,
 }: VideoCardProps) {
-  const [watchable, setWatchable] = useState(false);
+  const [watchable, setWatchable] = useState(true);
 
   const router = useRouter();
 
-  useEffect(() => {
-    const randomMock = Math.random() >= 0.4;
-    setWatchable(randomMock);
-  }, [watchable]);
+  // useEffect(() => {
+  //   const randomMock = Math.random() >= 0.4;
+  //   setWatchable(randomMock);
+  // }, [watchable]);
 
   return (
     <div
-      onClick={() => watchable && router.push(`/video/${cid}`)}
+      onClick={() => watchable && router.push(`/video/${id}`)}
       className={cn(
         "w-[360px] h-[300px] bg-vdf-black rounded-lg text-gray-200 shadow",
         watchable ? "cursor-pointer" : "cursor-not-allowed"
