@@ -3,16 +3,14 @@
 collection Video {
   id: string;
   address: string;
-  index: string;
   like: number;
   view: number;
   tag: Tag[];
   duration: string;
 
-  constructor(id: string, address: string, index: string, duration: string, tag?: Tag[]) {
+  constructor(id: string, address: string, duration: string, tag?: Tag[]) {
     this.id = id;
     this.address = address;
-    this.index = index;
     this.duration = duration;
     this.like = 0;
     this.view = 0;

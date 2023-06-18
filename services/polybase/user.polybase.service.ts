@@ -2,9 +2,9 @@ import { updateRecord } from "@/lib/polybase/update.polybase";
 import { writeRecord } from "@/lib/polybase/write.polybase";
 import { formatDataFetch } from "@/utils/polybase.util";
 
-export const createUser = async ({ name }: { name: string }) => {
+export const createUser = async ({ name, address }: { name: string, address: string }) => {
   try {
-    const res = await writeRecord({ collection: "User", data: [name] });
+    const res = await writeRecord({ collection: "User", data: [name, address] });
     return formatDataFetch(res);
   } catch (err) {
     console.error(err);

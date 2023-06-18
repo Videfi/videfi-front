@@ -17,6 +17,7 @@ import { getPublicClient, getWalletClient } from "@/lib/viem";
 import { VidefiContentDeployer } from "@/contracts/VidefiContentDeployer";
 import { ADDRESSES } from "@/constants/addresses";
 import { uploadFileToLighthouse } from "@/lib/lighthouse";
+import { createVideoAll } from "@/services/polybase/video.polybase.service";
 
 export default function CreateVideo() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -159,7 +160,11 @@ export default function CreateVideo() {
         hash,
       });
 
+      console.log(transaction);
+
       if (transaction.status === "success") {
+        const name = transaction.logs[0].address || "";
+        createVideoAll({ address: name, duration: duration.toString(), index: +limit });
         alert("Create content success");
       } else {
         alert("Transaction reverted");

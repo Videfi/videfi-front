@@ -4,11 +4,13 @@ collection User {
   id: string;
   publicKey: PublicKey;
   name: string; 
+  address: string;
 
-  constructor (id: string, name: string) {
+  constructor (id: string, name: string, address: string) {
     this.id = id;
     this.publicKey = ctx.publicKey;
     this.name = name;
+    this.address = address;
   }
 
   @call(publicKey)
