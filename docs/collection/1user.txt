@@ -1,0 +1,18 @@
+// User
+@public
+collection User {
+  id: string;
+  publicKey: PublicKey;
+  name: string; 
+
+  constructor (id: string, name: string) {
+    this.id = id;
+    this.publicKey = ctx.publicKey;
+    this.name = name;
+  }
+
+  @call(publicKey)
+  function setName (name: string) {
+    this.name = name;
+  }
+}

@@ -1,21 +1,47 @@
+import { useTagStore } from "@/services/store/tag.store";
+import { formatDataFetch } from "@/utils/polybase.util";
+import { useCollection, usePolybase } from "@polybase/react";
 import React from "react";
 
 export default function TagSelector() {
-  const mockTags = ["Music", "Game", "News", "Animal"];
-
+  const polybase = usePolybase();
+  const { data: Tags } = useCollection(polybase.collection("Tag"));
+  const { id: tagId, setTag } = useTagStore();
+  const mockTags = [
+    { id: "1", name: "Music" },
+    { id: "2", name: "Game" },
+    { id: "3", name: "News" },
+    { id: "4", name: "Animal" },
+  ];
   return (
-    <div className="mb-5 shadow-lg w-full">
-      <div className="inline-block px-3 py-1.5 mr-3 rounded-md bg-white text-vdf-gray text-sm  hover:bg-vdf-purple cursor-default">
+    <div className="mb-5 w-full">
+      <button
+        type="button"
+        onClick={() => setTag({ id: "all", name: "All" })}
+        className={`${
+          tagId === "all"
+            ? "bg-white text-vdf-gray cursor-default"
+            : "bg-vdf-gray text-gray-200 hover:bg-vdf-purple hover:text-gray-100 hover:opacity-70 cursor-pointer"
+        } inline-block px-2.5 py-1.5 mr-3 rounded-md text-sm`}      >
         All
-      </div>
-      {mockTags.map((tag, index) => {
+      </button>
+      {(Object.keys(formatDataFetch(Tags)).length > 0
+        ? formatDataFetch(Tags)
+        : mockTags
+      ).map((tag: any, index: number) => {
         return (
-          <div
+          <button
             key={index}
-            className="inline-block px-2.5 py-1.5 mr-3 rounded-md bg-vdf-gray text-gray-200 text-sm cursor-pointer hover:bg-vdf-purple hover:text-gray-100 hover:opacity-70"
+            type="button"
+            onClick={() => setTag({ id: tag.id, name: tag.name })}
+            className={`${
+              tagId === tag.id
+                ? "bg-white text-vdf-gray cursor-default"
+                : "bg-vdf-gray text-gray-200 hover:bg-vdf-purple hover:text-gray-100 hover:opacity-70 cursor-pointer"
+            } inline-block px-2.5 py-1.5 mr-3 rounded-md text-sm`}
           >
-            {tag}
-          </div>
+            {tag.name}
+          </button>
         );
       })}
     </div>

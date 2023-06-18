@@ -1,0 +1,47 @@
+// Video
+@public
+collection Video {
+  id: string;
+  address: string;
+  index: string;
+  like: number;
+  view: number;
+  tag: Tag[];
+  duration: string;
+
+  constructor(id: string, address: string, index: string, duration: string, tag?: Tag[]) {
+    this.id = id;
+    this.address = address;
+    this.index = index;
+    this.duration = duration;
+    this.like = 0;
+    this.view = 0;
+    
+    if (tag) {
+      this.tag = tag;
+    } else {
+      this.tag = [];
+    }
+  }
+
+  increaseLike() {
+    this.like = this.like + 1;
+  }
+  decreaseLike() {
+    this.like = this.like - 1;
+  }
+
+  increaseView() {
+    this.view = this.view + 1;
+  }
+  decreaseView() {
+    this.view = this.view - 1;
+  }
+
+  setTag(tag: Tag[]) {
+    this.tag = tag;
+  }
+  addTag(tag: Tag) {
+    this.tag.push(tag);
+  }
+}

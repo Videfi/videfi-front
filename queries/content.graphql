@@ -1,0 +1,23 @@
+query Content($id: ID!) {
+  contentNFT(id: $id) {
+    id
+    owner {
+      id
+    }
+    content {
+      contentName
+      contentSymbol
+      id
+      isDAOBeneficiary
+      mintPrice
+      paymentToken {
+        decimals
+        id
+        name
+        symbol
+      }
+      tokenURI
+      limitAmount
+    }
+  }
+}

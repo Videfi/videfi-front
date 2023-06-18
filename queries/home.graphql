@@ -1,0 +1,23 @@
+query HomeFeed($first: Int = 20, $skip: Int = 0) {
+  contentNFTs(first: $first, skip: $skip) {
+    id
+    owner {
+      id
+    }
+    content {
+      contentName
+      contentSymbol
+      id
+      isDAOBeneficiary
+      mintPrice
+      paymentToken {
+        decimals
+        id
+        name
+        symbol
+      }
+      tokenURI
+      limitAmount
+    }
+  }
+}
