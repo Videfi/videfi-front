@@ -21,7 +21,7 @@ const { chains, publicClient } = configureChains(
 
 const { connectors } = getDefaultWallets({
   appName: "Videfi",
-  chains,
+  chains: chains as any,
 });
 
 const wagmiConfig = createConfig({
