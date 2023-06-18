@@ -43,7 +43,7 @@ const BOTTOM_NAV_ITEM = [
     title: "DAO",
     path: "/dao",
     icon: NetworkIcon,
-    disabled: true,
+    disabled: false,
   },
   {
     title: "Revenue",
